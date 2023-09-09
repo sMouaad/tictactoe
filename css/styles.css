@@ -13,8 +13,21 @@ body, html{
 .flex-container{
     display:flex;
 }
+.characters{
+    width:100%;
+}
+#robot,
+#human{
+    width:auto;
+    height:100%;
+    position:fixed;
+    z-index:-1;
+}
+#robot{
+    right:0px;
+}
 .score{
-    justify-content: space-evenly;
+    justify-content: space-around;
     height:100px;
     align-items: flex-end;
 }
@@ -29,13 +42,13 @@ img{
 }
 .rps{
     justify-content: space-around;
-    align-items:flex-end;
     height:500px;
 }
-.play,
-.robot{
+.play.flex-container,
+.robot.flex-container{
     gap:10px;
 }
+
 .choice.player{
     border:solid royalblue;
     background-color: rgba(65, 105, 225, 0.114);
@@ -48,7 +61,7 @@ img{
 
 .choice.robot,
 .choice.player{
-    transition:.5s;
+    transition: .3s;
     border-radius:10px;
 }
 .choice.robot{
@@ -57,4 +70,51 @@ img{
 }
 .robotchoice{
     box-shadow: 0 0px 10px 5px orange;
+}
+
+.result{
+    flex-basis:200px;
+    text-align:center;
+}
+.playerchoice{
+    box-shadow: 0 0px 10px 5px royalblue;
+}
+.column{
+    flex-direction:column;
+}
+.flexy{
+    flex:1 1 50px;
+}
+.transition{
+    transition: flex 1.5s;
+    height:50px;
+}
+@keyframes tilt-n-move-shaking {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    25% { transform: translate(5px, 5px) rotate(5deg); }
+    50% { transform: translate(0, 0) rotate(0eg); }
+    75% { transform: translate(-5px, 5px) rotate(-5deg); }
+    100% { transform: translate(0, 0) rotate(0deg); }
+  }
+  @keyframes attackright {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    75% { transform: translate(-20px, 0px) rotate(0deg); }
+    85% {transform: translate(200px, 0px) rotate(0deg);}
+    100% { transform: translate(0, 0) rotate(0deg); }
+  }
+  @keyframes attackleft {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    75% { transform: translate(20px, 0px) rotate(0deg); }
+    85% {transform: translate(-200px, 0px) rotate(0deg);}
+    100% { transform: translate(0, 0) rotate(0deg); }
+  }
+.attackright{
+    animation:attackright 2s;
+}
+.attackleft{
+    animation:attackleft 2s;
+}
+.hurt{
+    filter:sepia(100%) saturate(2500%);
+    animation:tilt-n-move-shaking 0.15s;
 }

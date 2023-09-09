@@ -8,6 +8,10 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body class="flex-container">
+    <div class="characters">
+        <img id="human" src="./imgs/human.png" alt="">
+        <img id="robot" src="./imgs/robot.png" alt="">
+    </div>
     <div class="score flex-container">
         <div class="player1">
             <img class ="heart" src="./imgs/heart.png" alt="">
@@ -26,19 +30,39 @@
     </div>
     <div class="rps flex-container">
         <div class="play flex-container">
-            <img class="choice player" src="./imgs/rock.png" alt="">
-            <img class="choice player" src="./imgs/paper.png" alt="">
-            <img class="choice player" src="./imgs/scissors.png" alt="">
+            <div class="column flex-container">
+                <div class="flexy transition"></div>
+                <img class="rock choice player" src="./imgs/rock.png" alt="">
+            </div>
+            <div class="column flex-container">
+                <div class="flexy transition"></div>
+                <img class="paper choice player" src="./imgs/paper.png" alt="">
+            </div>
+            <div class="column flex-container">
+                <div class="flexy transition"></div>
+                <img class="scissors choice player" src="./imgs/scissors.png" alt="">
+            </div>
         </div>
         <div class="result"></div>
         <div class="robot flex-container">
-            <img class="choice robot" src="./imgs/rockrobot.png" alt="">
-            <img class="choice robot" src="./imgs/paperrobot.png" alt="">
-            <img class="choice robot" src="./imgs/scissorsrobot.png" alt="">
+            <div class="column flex-container">
+                <div class="flexy transition"></div>
+                <img class="rock choice robot" src="./imgs/rockrobot.png" alt="">
+            </div>
+            <div class="column flex-container">
+                <div class="flexy transition"></div>
+                <img class="paper choice robot" src="./imgs/paperrobot.png" alt="">
+            </div>
+            <div class="column flex-container">
+                <div class="flexy transition"></div>
+                <img class="scissors choice robot" src="./imgs/scissorsrobot.png" alt="">
+            </div>
         </div>
     </div>
     <footer style="text-align:center;color:black;">
         Copyright sMouaad 2023
     </footer>
+    <audio src="./audio/humanhurt.mp3"></audio>
+    <audio src="./audio/robothurt.mp3"></audio>
 </body>
 </html>

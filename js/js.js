@@ -1,11 +1,25 @@
-const btns = document.querySelectorAll("button");
+const btns = document.querySelectorAll(".choice.player");
 const gameResult = document.querySelector(".result");
 const round = [0,0];
 const rounds = document.querySelectorAll(".player")
+const audio = document.querySelectorAll("audio")
+const human = document.getElementById("human")
+const robot = document.getElementById("robot");
+function smooth(e){
+    e.target.classList.toggle("playerchoice");
+    e.target.previousElementSibling.classList.toggle("flexy");
+    btns.forEach((btn)=>{
+        btn.removeEventListener("click",smooth);
+    })
+    let computerChoice = getComputerChoice();
+    let computerElement = document.querySelector(`.${computerChoice.toLowerCase()}.choice.robot`);
+    computerElement.previousElementSibling.classList.toggle("flexy");
+    computerElement.classList.toggle("robotchoice");
+    game(e.target.classList[0],computerChoice);
+    //game(e.target.textContent);
+}
 btns.forEach((btn)=>{
-    btn.addEventListener("click", function (e){
-        game(e.target.textContent);
-    });
+    btn.addEventListener("click",smooth);
 })
 
 function getComputerChoice(){
@@ -20,8 +34,7 @@ function getComputerChoice(){
 }
 
 
-function rockPaperScissors(playerchoice){
-    let computerChoice = getComputerChoice();
+function rockPaperScissors(playerchoice, computerChoice){
     if(playerchoice.toLowerCase()==computerChoice.toLowerCase()) return("It's a tie!")
 
     if(playerchoice.toLowerCase()=='rock'){
@@ -38,18 +51,39 @@ function rockPaperScissors(playerchoice){
     }
 
 }
-function game(playerchoice){
+
+function game(playerchoice,computerChoice){
     //one of them won, we stop the game.
     if(round[0] === 5 || round[1] === 5){
         return
     }
     else{
-        let result;
-        result = rockPaperScissors(playerchoice);
+        let result = rockPaperScissors(playerchoice,computerChoice);
         if(result.includes("win")){
             rounds[0].textContent = ++round[0];
+            human.classList.add("attackright");
+            setTimeout(function (){
+                audio[1].play();
+                robot.classList.add("hurt");
+                setTimeout(function(){
+                    robot.classList.remove("hurt");
+                    robot.classList.remove("attackright");
+                },audio[0].duration*100)
+            },1600);
+
         }else if(result.includes("lose")){
             rounds[1].textContent = ++round[1];
+            robot.classList.add("attackleft");
+            setTimeout(function (){
+                audio[0].play();
+                human.classList.add("hurt");
+                setTimeout(function(){
+                    human.classList.remove("hurt");
+                    robot.classList.remove("attackleft");
+                },audio[0].duration*100)
+            },1600);
+            console.log("hi")
+            
         }
         if(round[0] === 5 || round[1] === 5){
             if(round[0]>round[1]) {
