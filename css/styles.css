@@ -1,7 +1,5 @@
 body{
-    display:flex;
-    justify-content: space-around;
-    align-items: center;
+    justify-content: space-between;
     flex-direction: column;
     background-image: url("../imgs/bgimage.jpg");
     background-size:cover;
@@ -9,9 +7,54 @@ body{
 }
 body, html{
     color:white;
+    margin:0px;
     height:100%;
 }
 .flex-container{
     display:flex;
+}
+.score{
+    justify-content: space-evenly;
+    height:100px;
+    align-items: flex-end;
+}
+img{
+    flex-shrink: 0;
+    height:100px;
+    width:auto;
+}
+.heart{
+    height:50px;
+    width:auto;
+}
+.rps{
+    justify-content: space-around;
+    align-items:flex-end;
+    height:500px;
+}
+.play,
+.robot{
     gap:10px;
+}
+.choice.player{
+    border:solid royalblue;
+    background-color: rgba(65, 105, 225, 0.114);
+}
+
+.choice.player:hover{
+    box-shadow: 0 0px 10px 5px royalblue;
+    cursor:pointer;
+}
+
+.choice.robot,
+.choice.player{
+    transition:.5s;
+    border-radius:10px;
+}
+.choice.robot{
+    background-color: rgba(255, 166, 0, 0.114);
+    border: solid orange;
+}
+.robotchoice{
+    box-shadow: 0 0px 10px 5px orange;
 }
