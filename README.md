@@ -1,2 +1,2 @@
-# tictactoe
+# RockPaperScissors
 small project to learn javascript.
