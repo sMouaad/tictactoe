@@ -61,25 +61,25 @@ function game(playerchoice,computerChoice){
         let result = rockPaperScissors(playerchoice,computerChoice);
         if(result.includes("win")){
             rounds[0].textContent = ++round[0];
+            human.classList.remove("attackright");
             human.classList.add("attackright");
             setTimeout(function (){
                 audio[1].play();
                 robot.classList.add("hurt");
                 setTimeout(function(){
                     robot.classList.remove("hurt");
-                    robot.classList.remove("attackright");
-                },audio[0].duration*100)
+                },audio[1].duration*100)
             },1600);
 
         }else if(result.includes("lose")){
             rounds[1].textContent = ++round[1];
+            robot.classList.remove("attackleft");
             robot.classList.add("attackleft");
             setTimeout(function (){
                 audio[0].play();
                 human.classList.add("hurt");
                 setTimeout(function(){
                     human.classList.remove("hurt");
-                    robot.classList.remove("attackleft");
                 },audio[0].duration*100)
             },1600);
             console.log("hi")
