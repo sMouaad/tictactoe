@@ -1,3 +1,13 @@
+const btns = document.querySelectorAll("button");
+const gameResult = document.querySelector(".result");
+const round = [0,0];
+const rounds = document.querySelectorAll(".player")
+btns.forEach((btn)=>{
+    btn.addEventListener("click", function (e){
+        game(e.target.textContent);
+    });
+})
+
 function getComputerChoice(){
     let choice = parseInt(Math.random()*3+1);
     if(choice == 1){
@@ -28,32 +38,31 @@ function rockPaperScissors(playerchoice){
     }
 
 }
-
-function game(){
-    let playerchoice;
-    let win = 0;
-    let result;
-    for (let i = 0; i < 5; i++) {
-        do{
-            playerchoice = prompt("What are you gonna play ?");
-        }while(playerchoice.toLowerCase()!="rock" && playerchoice.toLowerCase()!='paper' && playerchoice.toLowerCase()!="scissors");
-        if(!playerchoice) return;
-        result = rockPaperScissors(playerchoice);
-        if(result.includes("win")){
-            win++
-        }else if(result.includes("lose")){
-            win--;
-        }
-        console.log(result);
-    }
-    if(win >0){
-        console.log("YOU WON!");
-    }
-    else if (win <0){
-        console.log("YOU LOST!")
+function game(playerchoice){
+    //one of them won, we stop the game.
+    if(round[0] === 5 || round[1] === 5){
+        return
     }
     else{
-        console.log("TIE");
+        let result;
+        result = rockPaperScissors(playerchoice);
+        if(result.includes("win")){
+            rounds[0].textContent = ++round[0];
+        }else if(result.includes("lose")){
+            rounds[1].textContent = ++round[1];
+        }
+        if(round[0] === 5 || round[1] === 5){
+            if(round[0]>round[1]) {
+                gameResult.textContent="You won!"
+            }
+            else{
+                gameResult.textContent="You lost!"
+            }
+        }
+        else{
+            gameResult.textContent = result;
+        }
     }
-
+    
 }
+
