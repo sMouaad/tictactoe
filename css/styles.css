@@ -118,3 +118,6 @@ img{
     filter:sepia(100%) saturate(2500%);
     animation:tilt-n-move-shaking 0.15s;
 }
+.flash{
+    filter:brightness(10000%);
+}
