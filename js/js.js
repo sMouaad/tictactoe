@@ -125,19 +125,51 @@ function initializeHearts(){
         heart.src= "./imgs/hardcore-heart.png"
     })
 }
-function nextRound(){
-    robotButtons.forEach((btn)=>{
-        btn.previousElementSibling.classList.add("flexy");
-        btn.classList.remove("robotchoice");
-    })
+function initializeButtons(){
     humanButtons.forEach((btn)=>{
         btn.previousElementSibling.classList.add("flexy");
         btn.classList.remove("playerchoice");
         btn.addEventListener("click",smooth);
     })
 }
+function nextRound(){
+    robotButtons.forEach((btn)=>{
+        btn.previousElementSibling.classList.add("flexy");
+        btn.classList.remove("robotchoice");
+    })
+    initializeButtons();
+}
+function checkWin(result){
+    console.log(`second : ${heartIndex[0]} and ${heartIndex[1]+1}`);
+    if(heartIndex[0] === 5 || heartIndex[1]+1 === 0){
+        console.log("how are you now?")
+        if(heartIndex[1] === 0) {
+            gameResult.textContent="You lost!"
+        }
+        else{
+            gameResult.textContent="You won!"
+        }
+        humanButtons.forEach((btn)=>{
+            btn.removeEventListener("click",smooth);
+        })
+    }
+    else{
+        gameResult.textContent = result;
+    }
+}
+function initializeScore(){
+    heartIndex = [0,4];
+}
+
+function initializeGame(){
+    initializeHearts();
+    initializeButtons();
+    initializeScore();
+}
+
 function game(playerchoice,computerChoice){
     //one of them won, we stop the game.
+    gameResult.textContent="";
     console.log(`${heartIndex[0]} and ${heartIndex[1]+1}`);
     if(heartIndex[0] === 5 || heartIndex[1]+1 === 0){
         console.log("it stopped now :D")
@@ -157,19 +189,7 @@ function game(playerchoice,computerChoice){
             console.log("tie");
         }
         setTimeout(nextRound,2400);
-        console.log(`second : ${heartIndex[0]} and ${heartIndex[1]+1}`);
-        if(heartIndex[0] === 5 || heartIndex[1]+1 === 0){
-            console.log("how are you now?")
-            if(heartIndex[1] === 0) {
-                gameResult.textContent="You won!"
-            }
-            else{
-                gameResult.textContent="You lost!"
-            }
-        }
-        else{
-            gameResult.textContent = result;
-        }
+        setTimeout(checkWin,2400,result);
     }
     
 }
