@@ -3,10 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="js.js"></script>
+    <script src="js/js.js" defer></script>
     <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
-<body>
-    
+<body class="flex-container">
+    <div class="characters">
+        <img id="human" src="./imgs/human.png" alt="">
+        <img id="robot" src="./imgs/robot.png" alt="">
+    </div>
+    <div class="score flex-container">
+        <div class="player1">
+            <img class ="heart" src="./imgs/heart.png" alt="">
+            <img class ="heart" src="./imgs/heart.png" alt="">
+            <img class ="heart" src="./imgs/heart.png" alt="">
+            <img class ="heart" src="./imgs/heart.png" alt="">
+            <img class ="heart" src="./imgs/heart.png" alt="">
+        </div>
+        <div class="player2">
+            <img class ="heart" src="./imgs/hardcore-heart.png" alt="">
+            <img class ="heart" src="./imgs/hardcore-heart.png" alt="">
+            <img class ="heart" src="./imgs/hardcore-heart.png" alt="">
+            <img class ="heart" src="./imgs/hardcore-heart.png" alt="">
+            <img class ="heart" src="./imgs/hardcore-heart.png" alt="">
+        </div>
+    </div>
+    <div class="rps flex-container">
+        <div class="play flex-container">
+            <div class="column flex-container">
+                <div class="flexy transition"></div>
+                <img class="rock choice player" src="./imgs/rock.png" alt="">
+            </div>
+            <div class="column flex-container">
+                <div class="flexy transition"></div>
+                <img class="paper choice player" src="./imgs/paper.png" alt="">
+            </div>
+            <div class="column flex-container">
+                <div class="flexy transition"></div>
+                <img class="scissors choice player" src="./imgs/scissors.png" alt="">
+            </div>
+        </div>
+        <div style="justify-content:start;"class="flex-container column">
+            <h3 class="roboticfont">Man vs. Robot</h3>
+            <div class="result roboticfont"></div>
+            <button class ="hidden" onclick=initializeGame()>Play again.</button>
+        </div>
+        <div class="robot flex-container">
+            <div class="column flex-container">
+                <div class="flexy transition"></div>
+                <img class="rock choice robot" src="./imgs/rockrobot.png" alt="">
+            </div>
+            <div class="column flex-container">
+                <div class="flexy transition"></div>
+                <img class="paper choice robot" src="./imgs/paperrobot.png" alt="">
+            </div>
+            <div class="column flex-container">
+                <div class="flexy transition"></div>
+                <img class="scissors choice robot" src="./imgs/scissorsrobot.png" alt="">
+            </div>
+        </div>
+    </div>
+    <footer style="text-align:center;color:black;">
+        Copyright sMouaad 2023
+    </footer>
+    <audio src="./audio/humanhurt.mp3"></audio>
+    <audio src="./audio/robothurt.mp3"></audio>
 </body>
 </html>
