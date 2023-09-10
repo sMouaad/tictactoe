@@ -10,6 +10,8 @@ let robotHearts = document.querySelectorAll(".player2 .heart");
 let humanHearts = document.querySelectorAll(".player1 .heart");
 let heartIndex = [0,4]; // [0] : Robot [1] : Human;
 
+screen.orientation.lock("landscape");
+
 function smooth(e){
     e.target.classList.toggle("playerchoice");
     e.target.previousElementSibling.classList.toggle("flexy");
