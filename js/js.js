@@ -144,25 +144,32 @@ function checkWin(result){
     console.log(`second : ${heartIndex[0]} and ${heartIndex[1]+1}`);
     if(heartIndex[0] === 5 || heartIndex[1]+1 === 0){
         console.log("how are you now?")
-        if(heartIndex[1] === 0) {
+        if(heartIndex[0] === 5) {
             console.log("not")
             robot.src = "./imgs/death.gif"
             setTimeout(() => {
                 robot.src = "./imgs/robot.png"
                 robot.classList.add("hidden");
             },2000);
+            setTimeout(() => {
+                humanButtons.forEach((btn)=>{
+                    btn.removeEventListener("click",smooth);
+                })
+            }, 700);
             gameResult.textContent="You win!"
         }
-        else{
+        else if(heartIndex[1]+1===0){
             console.log("why")
             human.src = "./imgs/death.gif"
             setTimeout(() => {
                 human.src = "./imgs/human.png"
                 human.classList.add("hidden");
+            },2000);
+            setTimeout(() => {
                 humanButtons.forEach((btn)=>{
                     btn.removeEventListener("click",smooth);
                 })
-            },2000);
+            }, 700);
             gameResult.textContent="Game over!"
         }
         button.classList.remove("hidden");
