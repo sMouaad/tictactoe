@@ -159,3 +159,7 @@ button:hover{
 footer{
     font-family: roboticfont;
 }
+*{
+    user-select: none;
+    -webkit-user-drag: none;
+}
