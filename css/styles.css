@@ -1,3 +1,9 @@
+@font-face {
+    font-family: "roboticfont";
+    src: url(../fonts/roboticfont.ttf);
+    font-weight: normal;
+}
+
 body{
     justify-content: space-between;
     flex-direction: column;
@@ -120,4 +126,16 @@ img{
 }
 .flash{
     filter:brightness(10000%);
+}
+.hidden{
+    visibility:hidden;
+}
+.roboticfont{
+    font-family: roboticfont;
+    font-size:larger;
+    text-align: center;
+}
+h3.roboticfont{
+    font-size:40px;
+    z-index: -1;
 }

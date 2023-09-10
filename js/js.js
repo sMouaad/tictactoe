@@ -42,16 +42,16 @@ function rockPaperScissors(playerchoice, computerChoice){
     if(playerchoice.toLowerCase()==computerChoice.toLowerCase()) return("It's a tie!")
 
     if(playerchoice.toLowerCase()=='rock'){
-        if(computerChoice=='Scissors') return("You win! Rock beats Scissors.")
-        return("You lose! Paper beats Rock.")
+        if(computerChoice=='Scissors') return("You win!<br>Rock beats Scissors.")
+        return("You lose!<br>Paper beats Rock.")
     }
     if(playerchoice.toLowerCase()=='paper'){
-        if(computerChoice=='Scissors') return("You lose! Scissors beat Paper.")
-        return("You win! Paper beats Rock.")
+        if(computerChoice=='Scissors') return("You lose!<br>Scissors beat Paper.")
+        return("You win!<br>Paper beats Rock.")
     }
     if(playerchoice.toLowerCase()=='scissors'){
-        if(computerChoice=='Rock') return("You lose! Rock beats Scissors.")
-        return("You win! Scissors beat Paper.")
+        if(computerChoice=='Rock') return("You lose!<br>Rock beats Scissors.")
+        return("You win!<br> Scissors beat Paper.")
     }
 
 }
@@ -144,27 +144,42 @@ function checkWin(result){
     if(heartIndex[0] === 5 || heartIndex[1]+1 === 0){
         console.log("how are you now?")
         if(heartIndex[1] === 0) {
-            gameResult.textContent="You lost!"
+            console.log("not")
+            robot.src = "./imgs/death.gif"
+            setTimeout(() => {
+                robot.src = "./imgs/robot.png"
+                robot.classList.add("hidden");
+            },2000);
+            gameResult.textContent="You win!"
         }
         else{
-            gameResult.textContent="You won!"
+            console.log("why")
+            human.src = "./imgs/death.gif"
+            setTimeout(() => {
+                human.src = "./imgs/human.png"
+                human.classList.add("hidden");
+            },2000);
+            gameResult.textContent="You lost!"
         }
         humanButtons.forEach((btn)=>{
             btn.removeEventListener("click",smooth);
         })
-    }
-    else{
-        gameResult.textContent = result;
     }
 }
 function initializeScore(){
     heartIndex = [0,4];
 }
 
+function initializeCharacters(){
+    human.classList.remove("hidden");
+    robot.classList.remove("hidden");
+}
+
 function initializeGame(){
     initializeHearts();
     initializeButtons();
     initializeScore();
+    initializeCharacters();
 }
 
 function game(playerchoice,computerChoice){
@@ -188,8 +203,9 @@ function game(playerchoice,computerChoice){
         else{
             console.log("tie");
         }
+        gameResult.innerHTML = result;
         setTimeout(nextRound,2400);
-        setTimeout(checkWin,2400,result);
+        setTimeout(checkWin,1750,result);
     }
     
 }
