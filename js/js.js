@@ -2,6 +2,7 @@ const gameResult = document.querySelector(".result");
 const audio = document.querySelectorAll("audio")
 const human = document.getElementById("human")
 const robot = document.getElementById("robot");
+const button = document.querySelector("button");
 
 let humanButtons = document.querySelectorAll(".choice.player");
 let robotButtons = document.querySelectorAll(".choice.robot");
@@ -158,12 +159,13 @@ function checkWin(result){
             setTimeout(() => {
                 human.src = "./imgs/human.png"
                 human.classList.add("hidden");
+                humanButtons.forEach((btn)=>{
+                    btn.removeEventListener("click",smooth);
+                })
             },2000);
-            gameResult.textContent="You lost!"
+            gameResult.textContent="Game over!"
         }
-        humanButtons.forEach((btn)=>{
-            btn.removeEventListener("click",smooth);
-        })
+        button.classList.remove("hidden");
     }
 }
 function initializeScore(){
@@ -174,8 +176,8 @@ function initializeCharacters(){
     human.classList.remove("hidden");
     robot.classList.remove("hidden");
 }
-
 function initializeGame(){
+    button.classList.add("hidden");
     initializeHearts();
     initializeButtons();
     initializeScore();
@@ -187,7 +189,6 @@ function game(playerchoice,computerChoice){
     gameResult.textContent="";
     console.log(`${heartIndex[0]} and ${heartIndex[1]+1}`);
     if(heartIndex[0] === 5 || heartIndex[1]+1 === 0){
-        console.log("it stopped now :D")
         return
     }
     else{

@@ -81,6 +81,7 @@ img{
 .result{
     flex-basis:200px;
     text-align:center;
+    flex:0 0 60px;
 }
 .playerchoice{
     box-shadow: 0 0px 10px 5px royalblue;
@@ -138,4 +139,19 @@ img{
 h3.roboticfont{
     font-size:40px;
     z-index: -1;
+}
+
+button{
+    background: rgba(0, 13, 255, 0.155);
+    color:white;
+    font-family: roboticfont;
+    font-size:large;
+    width: max-content;
+    align-self: center;
+    padding:20px;
+    border:solid navy;
+    border-radius: 5px;
+}
+button:hover{
+    cursor:pointer;
 }
