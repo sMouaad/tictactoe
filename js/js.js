@@ -147,6 +147,7 @@ function checkWin(result){
         if(heartIndex[0] === 5) {
             robot.src = "./imgs/death.gif"
             setTimeout(() => {
+                button.classList.remove("hidden");
                 robot.src = "./imgs/robot.png"
                 robot.classList.add("hidden");
             },2000);
@@ -160,6 +161,7 @@ function checkWin(result){
         else if(heartIndex[1]+1===0){
             human.src = "./imgs/death.gif"
             setTimeout(() => {
+                button.classList.remove("hidden");
                 human.src = "./imgs/human.png"
                 human.classList.add("hidden");
             },2000);
@@ -170,7 +172,6 @@ function checkWin(result){
             }, 700);
             gameResult.textContent="Game over!"
         }
-        button.classList.remove("hidden");
     }
 }
 function initializeScore(){
