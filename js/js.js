@@ -141,11 +141,8 @@ function nextRound(){
     initializeButtons();
 }
 function checkWin(result){
-    console.log(`second : ${heartIndex[0]} and ${heartIndex[1]+1}`);
     if(heartIndex[0] === 5 || heartIndex[1]+1 === 0){
-        console.log("how are you now?")
         if(heartIndex[0] === 5) {
-            console.log("not")
             robot.src = "./imgs/death.gif"
             setTimeout(() => {
                 robot.src = "./imgs/robot.png"
@@ -159,7 +156,6 @@ function checkWin(result){
             gameResult.textContent="You win!"
         }
         else if(heartIndex[1]+1===0){
-            console.log("why")
             human.src = "./imgs/death.gif"
             setTimeout(() => {
                 human.src = "./imgs/human.png"
@@ -194,7 +190,6 @@ function initializeGame(){
 function game(playerchoice,computerChoice){
     //one of them won, we stop the game.
     gameResult.textContent="";
-    console.log(`${heartIndex[0]} and ${heartIndex[1]+1}`);
     if(heartIndex[0] === 5 || heartIndex[1]+1 === 0){
         return
     }
@@ -207,9 +202,6 @@ function game(playerchoice,computerChoice){
         }else if(result.includes("lose")){
             //this function takes around 2.15 seconds to finish.
             robotAttack();
-        }
-        else{
-            console.log("tie");
         }
         gameResult.innerHTML = result;
         setTimeout(nextRound,2400);
