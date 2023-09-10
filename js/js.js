@@ -60,7 +60,7 @@ function rockPaperScissors(playerchoice, computerChoice){
 }
 function robotHurt(duration){
     setTimeout(function (){
-        audio[1].play();
+        (heartIndex[0] === 4)? audio[2].play():audio[1].play();
         //takes 0.15 seconds to finish.
         robot.classList.add("hurt");
         decreaseHeart(1);
